@@ -11,9 +11,6 @@ const PORT = process.env.PORT || 5500;
 
 let postCount, imgURL, followers;
 
-
-
-
 app.get("/", (req, res, next) => {
 		ig.scrapeUserPage("advertere.tms").then((result) => {
 			postCount = result.user.edge_owner_to_timeline_media.count;
@@ -23,7 +20,6 @@ app.get("/", (req, res, next) => {
 			});
 			// console.log(postCount, imgURL)
       res.send({ postCount: postCount, followers: followers, imgURL: imgURL });
-      res.end();
 		});
 });
 
