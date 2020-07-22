@@ -5,7 +5,8 @@ const ig = require('instagram-scraping');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({
+}));
 
 const PORT = process.env.PORT || 5500;
 
@@ -17,9 +18,10 @@ app.get("/", (req, res, next) => {
 			followers = result.user.edge_followed_by.count;
 			imgURL = result.user.edge_owner_to_timeline_media.edges.map((edge) => {
 				return edge.node.thumbnail_resources[0].src;
-			});
+      });
+      const onj = { postCount, followers, imgURL };
 			// console.log(postCount, imgURL)
-      res.json({ postCount, followers, imgURL });
+      res.json(onj);
 		});
 });
 
