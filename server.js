@@ -15,7 +15,6 @@ let postCount, imgURL, followers;
 
 
 app.get("/", (req, res, next) => {
-  setInterval(() => {
 		ig.scrapeUserPage("advertere.tms").then((result) => {
 			postCount = result.user.edge_owner_to_timeline_media.count;
 			followers = result.user.edge_followed_by.count;
@@ -23,9 +22,9 @@ app.get("/", (req, res, next) => {
 				return edge.node.thumbnail_resources[0].src;
 			});
 			// console.log(postCount, imgURL)
+      res.send({ postCount: postCount, followers: followers, imgURL: imgURL });
+      res.end();
 		});
-    res.send({ postCount: postCount, followers: followers, imgURL: imgURL });	
-	}, 120000);
 });
 
 app.listen(PORT, () => {
