@@ -19,7 +19,7 @@ app.get("/", (req, res, next) => {
 				return edge.node.thumbnail_resources[0].src;
 			});
 			// console.log(postCount, imgURL)
-      res.send({ postCount, followers, imgURL });
+      res.json({ postCount, followers, imgURL });
 		});
 });
 
