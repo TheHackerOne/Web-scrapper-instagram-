@@ -14,8 +14,10 @@ app.use((req, res, next) => {
 	next();
 })
 
-app.get('/getdata',async (req, res, next) => {
+let data;
 
+const scrapper = () => {
+	const scrape = async () => {
 		const browser = await puppeteer.launch({ headless: true });
 		const page = await browser.newPage();
 		await page.setDefaultNavigationTimeout(0);
@@ -49,29 +51,37 @@ app.get('/getdata',async (req, res, next) => {
 		// await page.screenshot({ path: "3.png" });
 
 		// Execute code in the DOM
-		const data = await page.evaluate(() => {
+		const data1 = await page.evaluate(() => {
 			const images = document.querySelectorAll("img");
-			const doc = document.querySelectorAll(
-				"span.g47SY"
-			);
+			const doc = document.querySelectorAll("span.g47SY");
 			const urls = Array.from(images).map((v) => v.src);
 
 			// return urls;
-			const content = Array.from(doc).map(d => d.innerHTML)
+			const content = Array.from(doc).map((d) => d.innerHTML);
 			return { content: content, urls: urls };
 		});
 
 		await browser.close();
+		data = data1;
+	}
+	scrape();
+}
 
+app.get('/getdata',(req, res, next) => {
+		scrapper();
 		// console.log(data);
 
-		res.json(data);
+		res.json({ msg: "Rukoo zara......sabar karooo....1 mint lagega kam se kam" });
 		// res.send(data);
 		// return data;
-	})
+})
 
-app.listen(process.env.PORT, () => {
-  console.log(`successfully connected to port ${process.env.PORT}`);
+app.get('/getdata1', (req, res, next) => {
+	res.json(data);
+})
+
+app.listen(9090, () => {
+  console.log(`successfully connected to port ${9090}`);
 });
 
 
