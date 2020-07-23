@@ -63,15 +63,15 @@ app.get('/getdata',async (req, res, next) => {
 
 		await browser.close();
 
-		console.log(data);
+		// console.log(data);
 
 		res.json(data);
 		// res.send(data);
 		// return data;
 	})
 
-app.listen(8787, () => {
-  console.log(`successfully connected to port ${8787}`);
+app.listen(process.env.PORT, () => {
+  console.log(`successfully connected to port ${process.env.PORT}`);
 });
 
 
