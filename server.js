@@ -50,15 +50,15 @@ app.get('/getdata',async (req, res, next) => {
 
 		// Execute code in the DOM
 		const data = await page.evaluate(() => {
-			// const images = document.querySelectorAll("img");
+			const images = document.querySelectorAll("img");
 			const doc = document.querySelectorAll(
 				"span.g47SY"
 			);
-			// const urls = Array.from(images).map((v) => v.src);
+			const urls = Array.from(images).map((v) => v.src);
 
 			// return urls;
 			const content = Array.from(doc).map(d => d.innerHTML)
-			return content;
+			return { content: content, urls: urls };
 		});
 
 		await browser.close();
