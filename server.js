@@ -80,8 +80,8 @@ app.get('/getdata1', (req, res, next) => {
 	res.json(data);
 })
 
-app.listen(9090, () => {
-  console.log(`successfully connected to port ${9090}`);
+app.listen(process.env.PORT, () => {
+  console.log(`successfully connected to port ${process.env.PORT}`);
 });
 
 
