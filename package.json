@@ -21,9 +21,11 @@
     "instagram-scraping": "^1.0.13",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.24",
+    "puppeteer": "^5.2.1",
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
   },
