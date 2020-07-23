@@ -65,7 +65,7 @@ app.get('/getdata',async (req, res, next) => {
 
 		console.log(data);
 
-		res.send(data);
+		res.json(data);
 		// res.send(data);
 		// return data;
 	})
